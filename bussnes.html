@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html lang="ur" dir="ltr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0"/>
+<meta name="theme-color" content="#6366f1"/>
+<title>Haji Toor Khan Machine Block Works</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/noto-nastaliq-urdu@5.0.0/index.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/inter@5.0.0/index.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/poppins@5.0.0/index.css">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+  :root{
+    --purple:#8b5cf6;
+    --pink:#ec4899;
+    --blue:#3b82f6;
+    --cyan:#06b6d4;
+    --green:#10b981;
+    --yellow:#fbbf24;
+    --orange:#f97316;
+    --red:#ef4444;
+    --indigo:#6366f1;
+    --dark:#0f172a;
+    --darker:#020617;
+    --light:#f8fafc;
+    --grey:#64748b;
+  }
+  html{scroll-behavior:smooth;font-size:16px;}
+  body{
+    font-family:'Poppins','Inter',sans-serif;
+    color:var(--dark);
+    background:var(--light);
+    overflow-x:hidden;
+    line-height:1.6;
+  }
+  .urdu{font-family:'Noto Nastaliq Urdu',serif;line-height:2;}
+  img,svg{max-width:100%;display:block;}
+
+  /* ANIMATED GRADIENT BACKGROUND */
+  @keyframes gradientShift{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+  }
+  @keyframes float{
+    0%,100%{transform:translateY(0) rotate(0deg);}
+    50%{transform:translateY(-20px) rotate(5deg);}
+  }
+  @keyframes pulse{
+    0%,100%{transform:scale(1);opacity:0.7;}
+    50%{transform:scale(1.1);opacity:1;}
+  }
+  @keyframes spin{
+    from{transform:rotate(0deg);}
+    to{transform:rotate(360deg);}
+  }
+  @keyframes slideUp{
+    from{opacity:0;transform:translateY(40px);}
+    to{opacity:1;transform:translateY(0);}
+  }
+  @keyframes slideDown{
+    from{opacity:0;transform:translateY(-40px);}
+    to{opacity:1;transform:translateY(0);}
+  }
+  @keyframes rainbow{
+    0%{filter:hue-rotate(0deg);}
+    100%{filter:hue-rotate(360deg);}
+  }
+
+  /* NAVBAR */
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:1000;
+    background:linear-gradient(135deg,rgba(99,102,241,0.95),rgba(139,92,246,0.95),rgba(236,72,153,0.95));
+    background-size:300% 300%;
+    animation:gradientShift 8s ease infinite;
+    backdrop-filter:blur(15px);
+    -webkit-backdrop-filter:blur(15px);
+    padding:12px 5%;
+    display:flex;justify-content:space-between;align-items:center;
+    transition:all .3s;
+    box-shadow:0 4px 30px rgba(139,92,246,0.4);
+  }
+  .logo{display:flex;align-items:center;gap:10px;color:#fff;min-width:0;}
+  .logo-icon{
+    width:45px;height:45px;flex-shrink:0;
+    background:linear-gradient(135deg,#fbbf24,#f97316,#ef4444);
+    border-radius:12px;
+    display:flex;align-items:center;justify-content:center;
+    font-weight:900;font-size:16px;color:#fff;
+    box-shadow:0 4px 20px rgba(251,191,36,0.5);
+    animation:pulse 3s ease-in-out infinite;
+  }
+  .logo-text h1{font-size:14px;font-weight:700;line-height:1.2;white-space:nowrap;}
+  .logo-text p{font-size:9px;color:#fde68a;letter-spacing:1.5px;white-space:nowrap;}
+  .nav-links{display:flex;gap:22px;list-style:none;}
+  .nav-links a{
+    color:#fff;text-decoration:none;font-weight:500;font-size:14px;
+    position:relative;transition:all .3s;
+  }
+  .nav-links a:hover,.nav-links a:active{color:#fde68a;text-shadow:0 0 10px rgba(253,230,138,0.6);}
+  .nav-links a::after{
+    content:'';position:absolute;bottom:-5px;left:0;
+    width:0;height:2px;
+    background:linear-gradient(90deg,#fbbf24,#f97316,#ef4444);
+    transition:width .3s;
+  }
+  .nav-links a:hover::after{width:100%;}
+  .menu-btn{
+    display:none;background:none;border:none;color:#fff;
+    font-size:26px;cursor:pointer;padding:5px 10px;
+    border-radius:8px;transition:background .3s;
+  }
+  .menu-btn:active{background:rgba(255,255,255,0.15);}
+
+  /* HERO */
+  .hero{
+    min-height:100vh;
+    background:linear-gradient(-45deg,#6366f1,#8b5cf6,#ec4899,#f97316,#fbbf24,#10b981,#06b6d4);
+    background-size:400% 400%;
+    animation:gradientShift 15s ease infinite;
+    display:flex;align-items:center;justify-content:center;
+    position:relative;overflow:hidden;
+    padding:100px 5% 60px;
+  }
+  .hero::before{
+    content:'';position:absolute;inset:0;
+    background:
+      radial-gradient(circle at 20% 30%,rgba(255,255,255,0.2) 0%,transparent 50%),
+      radial-gradient(circle at 80% 70%,rgba(255,255,255,0.15) 0%,transparent 50%);
+  }
+  /* Floating colorful shapes */
+  .hero-shape{
+    position:absolute;border-radius:50%;
+    opacity:0.3;filter:blur(40px);
+    animation:float 8s ease-in-out infinite;
+  }
+  .shape1{width:200px;height:200px;background:#fbbf24;top:15%;left:10%;animation-delay:0s;}
+  .shape2{width:250px;height:250px;background:#ec4899;top:60%;right:10%;animation-delay:2s;}
+  .shape3{width:180px;height:180px;background:#06b6d4;bottom:10%;left:30%;animation-delay:4s;}
+  .shape4{width:150px;height:150px;background:#10b981;top:30%;right:25%;animation-delay:1s;}
+
+  .hero-content{
+    text-align:center;color:#fff;position:relative;z-index:2;
+    max-width:900px;width:100%;
+  }
+  .hero-badge{
+    display:inline-block;
+    background:rgba(255,255,255,0.2);
+    border:2px solid rgba(255,255,255,0.4);
+    color:#fff;
+    padding:8px 20px;border-radius:50px;
+    font-size:12px;letter-spacing:2px;margin-bottom:20px;
+    backdrop-filter:blur(10px);
+    animation:slideDown 1s;
+    box-shadow:0 0 20px rgba(255,255,255,0.3);
+  }
+  .hero h2{
+    font-size:clamp(28px,5.5vw,58px);
+    font-weight:800;line-height:1.15;margin-bottom:18px;
+    animation:slideUp 1s;
+    text-shadow:0 4px 20px rgba(0,0,0,0.2);
+  }
+  .hero h2 span{
+    background:linear-gradient(135deg,#fde68a,#fbbf24,#f97316);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    filter:drop-shadow(0 2px 10px rgba(251,191,36,0.5));
+  }
+  .hero .urdu-title{
+    font-size:clamp(24px,4.5vw,44px);
+    background:linear-gradient(135deg,#fde68a,#fff,#fde68a);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    margin-bottom:20px;
+    animation:slideUp 1.2s;
+    filter:drop-shadow(0 2px 15px rgba(255,255,255,0.4));
+  }
+  .hero p{
+    font-size:clamp(14px,2.2vw,17px);color:#fff;margin-bottom:30px;
+    max-width:700px;margin-left:auto;margin-right:auto;
+    padding:0 10px;
+    animation:slideUp 1.4s;
+    text-shadow:0 2px 10px rgba(0,0,0,0.2);
+  }
+  .hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;animation:slideUp 1.6s;}
+  .btn{
+    padding:13px 28px;border-radius:50px;font-weight:600;
+    text-decoration:none;transition:all .3s;
+    display:inline-flex;align-items:center;gap:8px;
+    border:none;cursor:pointer;font-size:14px;
+    min-height:48px;position:relative;overflow:hidden;
+  }
+  .btn-primary{
+    background:linear-gradient(135deg,#fbbf24,#f97316,#ef4444);
+    color:#fff;box-shadow:0 8px 25px rgba(249,115,22,0.5);
+  }
+  .btn-primary:hover,.btn-primary:active{transform:translateY(-3px);box-shadow:0 12px 35px rgba(249,115,22,0.7);}
+  .btn-outline{
+    background:rgba(255,255,255,0.15);color:#fff;border:2px solid #fff;
+    backdrop-filter:blur(10px);
+  }
+  .btn-outline:hover,.btn-outline:active{background:#fff;color:var(--indigo);}
+
+  .hero-stats{
+    display:grid;grid-template-columns:repeat(4,1fr);
+    gap:12px;margin-top:50px;
+    animation:slideUp 1.8s;
+  }
+  .stat{
+    background:rgba(255,255,255,0.15);
+    border:1px solid rgba(255,255,255,0.3);
+    padding:18px 10px;border-radius:15px;
+    backdrop-filter:blur(15px);
+    transition:all .3s;
+  }
+  .stat:nth-child(1){box-shadow:0 0 20px rgba(251,191,36,0.4);}
+  .stat:nth-child(2){box-shadow:0 0 20px rgba(236,72,153,0.4);}
+  .stat:nth-child(3){box-shadow:0 0 20px rgba(6,182,212,0.4);}
+  .stat:nth-child(4){box-shadow:0 0 20px rgba(16,185,129,0.4);}
+  .stat:hover{transform:translateY(-5px);}
+  .stat h3{
+    font-size:clamp(22px,4vw,34px);font-weight:800;
+    background:linear-gradient(135deg,#fff,#fde68a);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .stat p{font-size:clamp(10px,1.5vw,12px);color:#fff;margin:0;}
+
+  /* SECTIONS */
+  section{padding:70px 5%;position:relative;}
+  .section-head{text-align:center;margin-bottom:50px;}
+  .section-tag{
+    display:inline-block;
+    background:linear-gradient(135deg,var(--indigo),var(--pink));
+    color:#fff;
+    padding:6px 18px;border-radius:50px;
+    font-weight:600;letter-spacing:2px;
+    font-size:11px;text-transform:uppercase;margin-bottom:15px;
+    box-shadow:0 4px 15px rgba(99,102,241,0.4);
+  }
+  .section-head h2{
+    font-size:clamp(24px,4.5vw,40px);font-weight:800;
+    margin-bottom:12px;color:var(--dark);
+  }
+  .section-head h2 span{
+    background:linear-gradient(135deg,var(--indigo),var(--pink),var(--orange));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .section-head p{color:var(--grey);max-width:600px;margin:0 auto;font-size:clamp(13px,2vw,15px);}
+
+  /* ABOUT */
+  .about{
+    background:linear-gradient(135deg,#fef3c7 0%,#fce7f3 50%,#dbeafe 100%);
+    position:relative;overflow:hidden;
+  }
+  .about::before{
+    content:'';position:absolute;top:-100px;right:-100px;
+    width:300px;height:300px;border-radius:50%;
+    background:radial-gradient(circle,rgba(236,72,153,0.2),transparent);
+  }
+  .about::after{
+    content:'';position:absolute;bottom:-100px;left:-100px;
+    width:300px;height:300px;border-radius:50%;
+    background:radial-gradient(circle,rgba(99,102,241,0.2),transparent);
+  }
+  .about-grid{
+    display:grid;grid-template-columns:1fr 1fr;gap:40px;
+    max-width:1200px;margin:0 auto;align-items:center;
+    position:relative;z-index:2;
+  }
+  .about-visual{
+    background:linear-gradient(135deg,#6366f1,#8b5cf6,#ec4899);
+    border-radius:25px;padding:35px;color:#fff;
+    position:relative;overflow:hidden;
+    box-shadow:0 20px 50px rgba(99,102,241,0.3);
+  }
+  .about-visual::before{
+    content:'';position:absolute;top:-50px;right:-50px;
+    width:200px;height:200px;border-radius:50%;
+    background:radial-gradient(circle,rgba(251,191,36,0.4),transparent);
+  }
+  .about-visual .family-icon{
+    width:80px;height:80px;
+    background:linear-gradient(135deg,#fbbf24,#f97316);
+    border-radius:20px;display:flex;align-items:center;justify-content:center;
+    margin-bottom:20px;
+    box-shadow:0 10px 25px rgba(251,191,36,0.4);
+  }
+  .about-visual .family-icon svg{width:45px;height:45px;fill:#fff;}
+  .about-visual h3{font-size:clamp(22px,3.5vw,28px);margin-bottom:12px;}
+  .about-visual .urdu{font-size:clamp(18px,2.8vw,22px);color:#fde68a;margin-bottom:15px;}
+  .about-visual p{color:#fff;margin-bottom:12px;font-size:14px;opacity:0.95;}
+  .about-text h3{font-size:clamp(22px,3.5vw,28px);margin-bottom:15px;color:var(--dark);}
+  .about-text .urdu{font-size:clamp(17px,2.5vw,20px);color:var(--indigo);margin-bottom:15px;line-height:2.2;font-weight:600;}
+  .about-text p{color:var(--grey);margin-bottom:15px;font-size:clamp(14px,2vw,15px);}
+  .about-features{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px;}
+  .feature{
+    display:flex;align-items:center;gap:10px;
+    padding:12px;background:#fff;border-radius:12px;
+    transition:all .3s;
+    box-shadow:0 4px 15px rgba(0,0,0,0.05);
+  }
+  .feature:nth-child(1){border-left:4px solid var(--indigo);}
+  .feature:nth-child(2){border-left:4px solid var(--pink);}
+  .feature:nth-child(3){border-left:4px solid var(--green);}
+  .feature:nth-child(4){border-left:4px solid var(--orange);}
+  .feature:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(0,0,0,0.1);}
+  .feature-icon{
+    width:36px;height:36px;border-radius:10px;
+    display:flex;align-items:center;justify-content:center;
+    font-size:18px;flex-shrink:0;
+  }
+  .feature:nth-child(1) .feature-icon{background:rgba(99,102,241,0.15);}
+  .feature:nth-child(2) .feature-icon{background:rgba(236,72,153,0.15);}
+  .feature:nth-child(3) .feature-icon{background:rgba(16,185,129,0.15);}
+  .feature:nth-child(4) .feature-icon{background:rgba(249,115,22,0.15);}
+  .feature span{font-weight:600;font-size:13px;}
+
+  /* PRODUCTS */
+  .products{
+    background:linear-gradient(180deg,#f8fafc,#ede9fe);
+    position:relative;
+  }
+  .products-grid{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;max-width:1200px;margin:0 auto;
+  }
+  .product-card{
+    background:#fff;border-radius:20px;padding:25px 20px;
+    text-align:center;transition:all .4s;
+    border:2px solid transparent;position:relative;overflow:hidden;
+    box-shadow:0 5px 20px rgba(0,0,0,0.05);
+  }
+  .product-card::before{
+    content:'';position:absolute;top:0;left:0;right:0;height:5px;
+    transition:transform .4s;
+  }
+  .product-card:nth-child(1)::before{background:linear-gradient(90deg,#fbbf24,#f97316);}
+  .product-card:nth-child(2)::before{background:linear-gradient(90deg,#ec4899,#ef4444);}
+  .product-card:nth-child(3)::before{background:linear-gradient(90deg,#06b6d4,#3b82f6);}
+  .product-card:nth-child(4)::before{background:linear-gradient(90deg,#10b981,#06b6d4);}
+  .product-card:hover,.product-card:active{
+    transform:translateY(-8px);
+    box-shadow:0 20px 40px rgba(0,0,0,0.15);
+  }
+  .product-card:nth-child(1):hover{border-color:#fbbf24;}
+  .product-card:nth-child(2):hover{border-color:#ec4899;}
+  .product-card:nth-child(3):hover{border-color:#06b6d4;}
+  .product-card:nth-child(4):hover{border-color:#10b981;}
+  .block-visual{
+    width:110px;height:70px;margin:0 auto 18px;
+    border-radius:10px;position:relative;
+    box-shadow:inset 0 -5px 10px rgba(0,0,0,0.2),0 10px 20px rgba(0,0,0,0.15);
+    display:flex;align-items:center;justify-content:center;
+    transition:transform .4s;
+  }
+  .product-card:nth-child(1) .block-visual{background:linear-gradient(135deg,#fbbf24,#f97316);height:45px;}
+  .product-card:nth-child(2) .block-visual{background:linear-gradient(135deg,#ec4899,#ef4444);height:55px;}
+  .product-card:nth-child(3) .block-visual{background:linear-gradient(135deg,#06b6d4,#3b82f6);height:65px;}
+  .product-card:nth-child(4) .block-visual{background:linear-gradient(135deg,#10b981,#06b6d4);height:75px;}
+  .product-card:hover .block-visual{transform:scale(1.05) rotate(-2deg);}
+  .block-visual::after{
+    content:'';position:absolute;inset:8px;
+    background:repeating-linear-gradient(90deg,transparent 0,transparent 10px,rgba(255,255,255,0.2) 10px,rgba(255,255,255,0.2) 11px);
+    border-radius:4px;
+  }
+  .block-visual span{
+    position:relative;z-index:2;
+    font-size:24px;font-weight:900;color:#fff;
+    text-shadow:0 2px 5px rgba(0,0,0,0.3);
+  }
+  .product-card h3{font-size:clamp(18px,2.5vw,22px);margin-bottom:8px;color:var(--dark);}
+  .product-card:nth-child(1) .urdu{color:#f97316;}
+  .product-card:nth-child(2) .urdu{color:#ec4899;}
+  .product-card:nth-child(3) .urdu{color:#3b82f6;}
+  .product-card:nth-child(4) .urdu{color:#10b981;}
+  .product-card .urdu{font-size:clamp(15px,2.2vw,18px);margin-bottom:8px;font-weight:600;}
+  .product-card p{color:var(--grey);font-size:13px;}
+
+  /* SERVICES */
+  .services{
+    background:linear-gradient(135deg,#fef2f2 0%,#fef3c7 25%,#d1fae5 50%,#dbeafe 75%,#ede9fe 100%);
+    background-size:200% 200%;
+    animation:gradientShift 20s ease infinite;
+  }
+  .services-grid{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:20px;max-width:1200px;margin:0 auto;
+  }
+  .service-card{
+    padding:30px 22px;border-radius:20px;
+    background:#fff;
+    transition:all .4s;
+    position:relative;overflow:hidden;
+    box-shadow:0 5px 20px rgba(0,0,0,0.06);
+    border:2px solid transparent;
+  }
+  .service-card::before{
+    content:'';position:absolute;top:0;left:0;right:0;height:4px;
+  }
+  .service-card:nth-child(1)::before{background:linear-gradient(90deg,#6366f1,#8b5cf6);}
+  .service-card:nth-child(2)::before{background:linear-gradient(90deg,#ec4899,#f43f5e);}
+  .service-card:nth-child(3)::before{background:linear-gradient(90deg,#10b981,#06b6d4);}
+  .service-card:nth-child(4)::before{background:linear-gradient(90deg,#f97316,#fbbf24);}
+  .service-card:nth-child(5)::before{background:linear-gradient(90deg,#3b82f6,#6366f1);}
+  .service-card:nth-child(6)::before{background:linear-gradient(90deg,#ef4444,#ec4899);}
+  .service-card:hover,.service-card:active{
+    transform:translateY(-8px);
+    box-shadow:0 20px 40px rgba(0,0,0,0.12);
+  }
+  .service-card:nth-child(1):hover{border-color:#6366f1;}
+  .service-card:nth-child(2):hover{border-color:#ec4899;}
+  .service-card:nth-child(3):hover{border-color:#10b981;}
+  .service-card:nth-child(4):hover{border-color:#f97316;}
+  .service-card:nth-child(5):hover{border-color:#3b82f6;}
+  .service-card:nth-child(6):hover{border-color:#ef4444;}
+  .service-icon{
+    width:60px;height:60px;border-radius:16px;
+    display:flex;align-items:center;justify-content:center;
+    margin-bottom:18px;transition:all .4s;
+    color:#fff;
+  }
+  .service-card:nth-child(1) .service-icon{background:linear-gradient(135deg,#6366f1,#8b5cf6);}
+  .service-card:nth-child(2) .service-icon{background:linear-gradient(135deg,#ec4899,#f43f5e);}
+  .service-card:nth-child(3) .service-icon{background:linear-gradient(135deg,#10b981,#06b6d4);}
+  .service-card:nth-child(4) .service-icon{background:linear-gradient(135deg,#f97316,#fbbf24);}
+  .service-card:nth-child(5) .service-icon{background:linear-gradient(135deg,#3b82f6,#6366f1);}
+  .service-card:nth-child(6) .service-icon{background:linear-gradient(135deg,#ef4444,#ec4899);}
+  .service-card:hover .service-icon{transform:rotate(-10deg) scale(1.1);}
+  .service-icon svg{width:28px;height:28px;}
+  .service-card h3{font-size:clamp(17px,2.3vw,20px);margin-bottom:10px;}
+  .service-card .urdu{margin-bottom:10px;font-size:clamp(15px,2vw,17px);font-weight:600;}
+  .service-card:nth-child(1) .urdu{color:#6366f1;}
+  .service-card:nth-child(2) .urdu{color:#ec4899;}
+  .service-card:nth-child(3) .urdu{color:#10b981;}
+  .service-card:nth-child(4) .urdu{color:#f97316;}
+  .service-card:nth-child(5) .urdu{color:#3b82f6;}
+  .service-card:nth-child(6) .urdu{color:#ef4444;}
+  .service-card p{color:var(--grey);font-size:13px;}
+
+  /* FLEET */
+  .fleet{
+    background:linear-gradient(135deg,#0f172a,#1e1b4b,#312e81,#1e3a8a);
+    background-size:300% 300%;
+    animation:gradientShift 15s ease infinite;
+    color:#fff;position:relative;overflow:hidden;
+  }
+  .fleet::before{
+    content:'';position:absolute;top:0;left:0;right:0;bottom:0;
+    background:
+      radial-gradient(circle at 20% 30%,rgba(236,72,153,0.2) 0%,transparent 40%),
+      radial-gradient(circle at 80% 70%,rgba(6,182,212,0.2) 0%,transparent 40%),
+      radial-gradient(circle at 50% 50%,rgba(251,191,36,0.15) 0%,transparent 50%);
+  }
+  .fleet .section-head h2{color:#fff;}
+  .fleet .section-head h2 span{
+    background:linear-gradient(135deg,#fbbf24,#ec4899,#06b6d4);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .fleet .section-head p{color:#cbd5e1;}
+  .fleet-grid{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:20px;max-width:1100px;margin:0 auto;
+    position:relative;z-index:2;
+  }
+  .fleet-card{
+    background:rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,0.15);
+    padding:30px 22px;border-radius:20px;
+    text-align:center;transition:all .4s;
+    backdrop-filter:blur(15px);
+  }
+  .fleet-card:nth-child(1):hover{
+    background:rgba(251,191,36,0.15);
+    border-color:#fbbf24;
+    box-shadow:0 0 30px rgba(251,191,36,0.3);
+  }
+  .fleet-card:nth-child(2):hover{
+    background:rgba(236,72,153,0.15);
+    border-color:#ec4899;
+    box-shadow:0 0 30px rgba(236,72,153,0.3);
+  }
+  .fleet-card:nth-child(3):hover{
+    background:rgba(6,182,212,0.15);
+    border-color:#06b6d4;
+    box-shadow:0 0 30px rgba(6,182,212,0.3);
+  }
+  .fleet-card:hover{transform:translateY(-8px);}
+  .fleet-icon{
+    width:75px;height:75px;margin:0 auto 18px;
+    border-radius:20px;display:flex;align-items:center;justify-content:center;
+    box-shadow:0 10px 25px rgba(0,0,0,0.3);
+  }
+  .fleet-card:nth-child(1) .fleet-icon{background:linear-gradient(135deg,#fbbf24,#f97316);}
+  .fleet-card:nth-child(2) .fleet-icon{background:linear-gradient(135deg,#ec4899,#ef4444);}
+  .fleet-card:nth-child(3) .fleet-icon{background:linear-gradient(135deg,#06b6d4,#3b82f6);}
+  .fleet-icon svg{width:38px;height:38px;fill:#fff;}
+  .fleet-card h3{font-size:clamp(19px,2.5vw,22px);margin-bottom:6px;}
+  .fleet-card .urdu{margin-bottom:10px;font-size:clamp(15px,2vw,17px);font-weight:600;}
+  .fleet-card:nth-child(1) .urdu{color:#fbbf24;}
+  .fleet-card:nth-child(2) .urdu{color:#ec4899;}
+  .fleet-card:nth-child(3) .urdu{color:#06b6d4;}
+  .fleet-card .count{
+    display:inline-block;padding:6px 14px;
+    border-radius:50px;font-weight:700;margin-bottom:12px;font-size:13px;
+  }
+  .fleet-card:nth-child(1) .count{background:rgba(251,191,36,0.2);color:#fbbf24;}
+  .fleet-card:nth-child(2) .count{background:rgba(236,72,153,0.2);color:#ec4899;}
+  .fleet-card:nth-child(3) .count{background:rgba(6,182,212,0.2);color:#06b6d4;}
+  .fleet-card p{color:#cbd5e1;font-size:13px;}
+
+  /* TEAM */
+  .team{
+    background:linear-gradient(135deg,#fef3c7 0%,#fce7f3 50%,#e0e7ff 100%);
+    position:relative;overflow:hidden;
+  }
+  .team::before{
+    content:'';position:absolute;top:-150px;left:50%;
+    width:400px;height:400px;border-radius:50%;
+    background:radial-gradient(circle,rgba(139,92,246,0.15),transparent);
+    transform:translateX(-50%);
+  }
+  .team-grid{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:18px;max-width:1100px;margin:0 auto;
+    position:relative;z-index:2;
+  }
+  .team-card{
+    background:#fff;padding:28px 18px;border-radius:20px;
+    text-align:center;transition:all .4s;
+    border:2px solid transparent;
+    box-shadow:0 5px 20px rgba(0,0,0,0.06);
+  }
+  .team-card:nth-child(1):hover{border-color:#6366f1;transform:translateY(-8px);box-shadow:0 20px 40px rgba(99,102,241,0.2);}
+  .team-card:nth-child(2):hover{border-color:#ec4899;transform:translateY(-8px);box-shadow:0 20px 40px rgba(236,72,153,0.2);}
+  .team-card:nth-child(3):hover{border-color:#10b981;transform:translateY(-8px);box-shadow:0 20px 40px rgba(16,185,129,0.2);}
+  .team-card:nth-child(4):hover{border-color:#f97316;transform:translateY(-8px);box-shadow:0 20px 40px rgba(249,115,22,0.2);}
+  .team-avatar{
+    width:75px;height:75px;border-radius:50%;
+    margin:0 auto 12px;display:flex;align-items:center;justify-content:center;
+    color:#fff;font-size:24px;font-weight:800;
+    transition:transform .4s;
+  }
+  .team-card:hover .team-avatar{transform:scale(1.1) rotate(-5deg);}
+  .team-card:nth-child(1) .team-avatar{background:linear-gradient(135deg,#6366f1,#8b5cf6);box-shadow:0 8px 20px rgba(99,102,241,0.4);}
+  .team-card:nth-child(2) .team-avatar{background:linear-gradient(135deg,#ec4899,#f43f5e);box-shadow:0 8px 20px rgba(236,72,153,0.4);}
+  .team-card:nth-child(3) .team-avatar{background:linear-gradient(135deg,#10b981,#06b6d4);box-shadow:0 8px 20px rgba(16,185,129,0.4);}
+  .team-card:nth-child(4) .team-avatar{background:linear-gradient(135deg,#f97316,#fbbf24);box-shadow:0 8px 20px rgba(249,115,22,0.4);}
+  .team-card h4{font-size:clamp(15px,2vw,17px);margin-bottom:4px;}
+  .team-card:nth-child(1) .urdu{color:#6366f1;}
+  .team-card:nth-child(2) .urdu{color:#ec4899;}
+  .team-card:nth-child(3) .urdu{color:#10b981;}
+  .team-card:nth-child(4) .urdu{color:#f97316;}
+  .team-card .urdu{font-size:clamp(13px,1.8vw,15px);margin-bottom:8px;font-weight:600;}
+  .team-card p{color:var(--grey);font-size:12px;}
+
+  /* CARE */
+  .care{
+    background:linear-gradient(135deg,#fef3c7,#fed7aa,#fecaca,#fbcfe8,#e9d5ff);
+    background-size:300% 300%;
+    animation:gradientShift 15s ease infinite;
+    text-align:center;
+    position:relative;overflow:hidden;
+  }
+  .care-content{max-width:900px;margin:0 auto;position:relative;z-index:2;}
+  .care-grid{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:18px;margin-top:35px;
+  }
+  .care-item{
+    background:#fff;padding:28px 18px;border-radius:20px;
+    transition:all .4s;
+    border:2px solid transparent;
+  }
+  .care-item:nth-child(1):hover{border-color:#f97316;transform:translateY(-8px);box-shadow:0 20px 40px rgba(249,115,22,0.2);}
+  .care-item:nth-child(2):hover{border-color:#ec4899;transform:translateY(-8px);box-shadow:0 20px 40px rgba(236,72,153,0.2);}
+  .care-item:nth-child(3):hover{border-color:#6366f1;transform:translateY(-8px);box-shadow:0 20px 40px rgba(99,102,241,0.2);}
+  .care-item:nth-child(4):hover{border-color:#10b981;transform:translateY(-8px);box-shadow:0 20px 40px rgba(16,185,129,0.2);}
+  .care-item .emoji{font-size:48px;margin-bottom:12px;display:inline-block;animation:float 4s ease-in-out infinite;}
+  .care-item:nth-child(2) .emoji{animation-delay:1s;}
+  .care-item:nth-child(3) .emoji{animation-delay:2s;}
+  .care-item:nth-child(4) .emoji{animation-delay:3s;}
+  .care-item h4{font-size:clamp(16px,2.2vw,18px);margin-bottom:6px;color:var(--dark);}
+  .care-item:nth-child(1) .urdu{color:#f97316;}
+  .care-item:nth-child(2) .urdu{color:#ec4899;}
+  .care-item:nth-child(3) .urdu{color:#6366f1;}
+  .care-item:nth-child(4) .urdu{color:#10b981;}
+  .care-item .urdu{font-size:clamp(14px,2vw,16px);font-weight:600;}
+  .care-item p{color:var(--grey);font-size:13px;margin-top:8px;}
+
+  /* CONTACT */
+  .contact{
+    background:linear-gradient(135deg,#e0e7ff 0%,#fce7f3 50%,#fef3c7 100%);
+    position:relative;
+  }
+  .contact-grid{
+    display:grid;grid-template-columns:1fr 1fr;gap:30px;
+    max-width:1100px;margin:0 auto;
+  }
+  .contact-info{
+    background:linear-gradient(135deg,#6366f1,#8b5cf6,#ec4899);
+    padding:35px 28px;border-radius:25px;color:#fff;
+    box-shadow:0 20px 50px rgba(99,102,241,0.3);
+    position:relative;overflow:hidden;
+  }
+  .contact-info::before{
+    content:'';position:absolute;top:-50px;right:-50px;
+    width:200px;height:200px;border-radius:50%;
+    background:radial-gradient(circle,rgba(251,191,36,0.3),transparent);
+  }
+  .contact-info h3{font-size:clamp(20px,3vw,24px);margin-bottom:8px;position:relative;}
+  .contact-info .urdu{color:#fde68a;font-size:clamp(17px,2.5vw,20px);margin-bottom:20px;position:relative;}
+  .contact-item{
+    display:flex;gap:12px;margin-bottom:20px;align-items:flex-start;
+    position:relative;
+  }
+  .contact-item-icon{
+    width:45px;height:45px;border-radius:12px;
+    display:flex;align-items:center;justify-content:center;flex-shrink:0;
+    color:#fff;
+  }
+  .contact-item:nth-child(2) .contact-item-icon{background:rgba(251,191,36,0.25);}
+  .contact-item:nth-child(3) .contact-item-icon{background:rgba(6,182,212,0.25);}
+  .contact-item:nth-child(4) .contact-item-icon{background:rgba(16,185,129,0.25);}
+  .contact-item:nth-child(5) .contact-item-icon{background:rgba(236,72,153,0.25);}
+  .contact-item-icon svg{width:22px;height:22px;}
+  .contact-item h4{font-size:12px;color:#fde68a;margin-bottom:3px;letter-spacing:1px;}
+  .contact-item p{color:#fff;font-size:14px;word-break:break-word;}
+  .contact-form{
+    background:#fff;padding:35px 28px;border-radius:25px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.08);
+  }
+  .contact-form h3{
+    font-size:clamp(19px,2.8vw,22px);margin-bottom:18px;
+    background:linear-gradient(135deg,var(--indigo),var(--pink));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .form-group{margin-bottom:15px;}
+  .form-group label{display:block;margin-bottom:5px;font-weight:600;font-size:13px;color:var(--dark);}
+  .form-group input,.form-group textarea{
+    width:100%;padding:12px 14px;border:2px solid #e5e7eb;
+    border-radius:12px;font-family:inherit;font-size:14px;
+    transition:all .3s;background:#f8fafc;
+  }
+  .form-group input:focus,.form-group textarea:focus{
+    outline:none;border-color:var(--indigo);
+    box-shadow:0 0 0 4px rgba(99,102,241,0.1);
+    background:#fff;
+  }
+  .form-group textarea{resize:vertical;min-height:90px;}
+
+  /* FOOTER */
+  footer{
+    background:linear-gradient(135deg,#0f172a,#1e1b4b,#312e81);
+    color:#cbd5e1;
+    padding:45px 5% 20px;text-align:center;
+    position:relative;overflow:hidden;
+  }
+  footer::before{
+    content:'';position:absolute;top:0;left:0;right:0;height:4px;
+    background:linear-gradient(90deg,#fbbf24,#ec4899,#06b6d4,#10b981,#6366f1);
+  }
+  .footer-content{max-width:1100px;margin:0 auto;position:relative;z-index:2;}
+  .footer-logo{
+    display:flex;align-items:center;justify-content:center;gap:12px;
+    margin-bottom:18px;flex-wrap:wrap;
+  }
+  .footer-logo h3{color:#fff;font-size:clamp(16px,2.5vw,20px);text-align:center;}
+  .footer-logo .urdu{
+    font-size:clamp(15px,2.3vw,18px);
+    background:linear-gradient(135deg,#fbbf24,#ec4899);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  footer p{font-size:13px;margin-bottom:8px;}
+  .footer-bottom{
+    border-top:1px solid rgba(255,255,255,0.1);
+    padding-top:18px;margin-top:25px;font-size:12px;color:#94a3b8;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media(max-width:992px){
+    .about-grid{grid-template-columns:1fr;gap:30px;}
+    .contact-grid{grid-template-columns:1fr;}
+  }
+
+  @media(max-width:768px){
+    section{padding:55px 5%;}
+    .menu-btn{display:block;}
+    .nav-links{
+      position:fixed;top:66px;left:0;right:0;
+      background:linear-gradient(135deg,rgba(99,102,241,0.98),rgba(139,92,246,0.98));
+      flex-direction:column;
+      padding:15px 20px;gap:8px;
+      transform:translateY(-150%);transition:transform .35s ease;
+      box-shadow:0 10px 30px rgba(0,0,0,0.3);
+      max-height:calc(100vh - 66px);overflow-y:auto;
+    }
+    .nav-links.active{transform:translateY(0);}
+    .nav-links a{
+      padding:12px 15px;border-radius:10px;
+      display:block;font-size:15px;
+    }
+    .nav-links a:hover,.nav-links a:active{background:rgba(255,255,255,0.15);}
+    .nav-links a::after{display:none;}
+    .hero-stats{grid-template-columns:repeat(2,1fr);gap:10px;}
+    .hero-btns{flex-direction:column;width:100%;max-width:280px;margin:0 auto;}
+    .hero-btns .btn{width:100%;justify-content:center;}
+    .about-features{grid-template-columns:1fr;}
+    .products-grid{grid-template-columns:repeat(2,1fr);gap:15px;}
+    .services-grid{grid-template-columns:1fr;}
+    .fleet-grid{grid-template-columns:1fr;}
+    .team-grid{grid-template-columns:repeat(2,1fr);}
+    .care-grid{grid-template-columns:repeat(2,1fr);}
+  }
+
+  @media(max-width:480px){
+    nav{padding:10px 4%;}
+    .logo-icon{width:38px;height:38px;font-size:14px;border-radius:8px;}
+    .logo-text h1{font-size:13px;}
+    .logo-text p{font-size:8px;letter-spacing:1px;}
+    .hero{padding:90px 5% 50px;}
+    .hero-badge{font-size:10px;padding:6px 14px;letter-spacing:1.5px;}
+    .hero h2{margin-bottom:15px;}
+    .hero .urdu-title{margin-bottom:15px;}
+    .hero p{margin-bottom:25px;font-size:14px;}
+    .stat{padding:14px 8px;}
+    .stat h3{font-size:22px;}
+    .stat p{font-size:10px;}
+    section{padding:50px 4%;}
+    .section-head{margin-bottom:35px;}
+    .about-visual{padding:25px 20px;}
+    .about-visual .family-icon{width:65px;height:65px;border-radius:16px;}
+    .about-visual .family-icon svg{width:38px;height:38px;}
+    .product-card{padding:20px 15px;}
+    .block-visual{width:90px;height:60px;}
+    .block-visual span{font-size:20px;}
+    .service-card{padding:25px 18px;}
+    .service-icon{width:52px;height:52px;border-radius:13px;}
+    .service-icon svg{width:24px;height:24px;}
+    .fleet-card{padding:25px 18px;}
+    .fleet-icon{width:60px;height:60px;border-radius:15px;}
+    .fleet-icon svg{width:32px;height:32px;}
+    .team-grid{grid-template-columns:repeat(2,1fr);gap:12px;}
+    .team-card{padding:22px 12px;}
+    .team-avatar{width:58px;height:58px;font-size:20px;}
+    .care-grid{grid-template-columns:1fr;}
+    .care-item{padding:22px 15px;}
+    .contact-info,.contact-form{padding:28px 20px;}
+    .contact-item{gap:10px;margin-bottom:16px;}
+    .contact-item-icon{width:40px;height:40px;border-radius:8px;}
+    .contact-item-icon svg{width:20px;height:20px;}
+    .contact-item p{font-size:13px;}
+    .btn{padding:12px 22px;font-size:13px;min-height:44px;}
+    .footer-logo h3{font-size:15px;}
+  }
+
+  @media(max-width:360px){
+    .hero-stats{grid-template-columns:1fr 1fr;}
+    .products-grid{grid-template-columns:1fr;}
+    .team-grid{grid-template-columns:1fr;}
+    .care-grid{grid-template-columns:1fr;}
+    .logo-text h1{font-size:12px;}
+  }
+
+  @media(max-height:500px) and (orientation:landscape){
+    .hero{min-height:auto;padding:90px 5% 40px;}
+    .hero-stats{grid-template-columns:repeat(4,1fr);}
+  }
+
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important;}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="logo">
+    <div class="logo-icon">HT</div>
+    <div class="logo-text">
+      <h1>Haji Toor Khan</h1>
+      <p>MACHINE BLOCK WORKS</p>
+    </div>
+  </div>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#products">Products</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#fleet">Fleet</a></li>
+    <li><a href="#team">Team</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="menu-btn" id="menuBtn" aria-label="Menu">☰</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-shape shape1"></div>
+  <div class="hero-shape shape2"></div>
+  <div class="hero-shape shape3"></div>
+  <div class="hero-shape shape4"></div>
+  <div class="hero-content">
+    <div class="hero-badge">★ TRUSTED CONSTRUCTION PARTNER ★</div>
+    <h2>Building Dreams With <span>Quality Blocks</span></h2>
+    <div class="urdu-title urdu">حاجی طور خان مشین بلاک ورکس</div>
+    <p>A family legacy of excellence in block manufacturing and construction services. From foundation to finishing — we build with trust, strength and commitment.</p>
+    <div class="hero-btns">
+      <a href="#products" class="btn btn-primary">Our Blocks →</a>
+      <a href="#contact" class="btn btn-outline">Get Quote</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><h3>4+</h3><p>Block Sizes</p></div>
+      <div class="stat"><h3>10+</h3><p>Skilled Labor</p></div>
+      <div class="stat"><h3>5</h3><p>Own Vehicles</p></div>
+      <div class="stat"><h3>9</h3><p>Family Members</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="section-head">
+    <div class="section-tag">About Us</div>
+    <h2>Our <span>Family Legacy</span></h2>
+    <p>A proud family business built on hard work, unity and quality</p>
+  </div>
+  <div class="about-grid">
+    <div class="about-visual">
+      <div class="family-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+      </div>
+      <h3>Saifullah Khan</h3>
+      <div class="urdu urdu">سیف اللہ خان — سن آف اجمل خان</div>
+      <p>Leading the family business with passion and dedication, continuing the legacy started by our forefathers.</p>
+      <p style="color:#fde68a;font-weight:600;">Father: Ajmal Khan — Founder & Guide</p>
+    </div>
+    <div class="about-text">
+      <h3>A Family United in Work</h3>
+      <div class="urdu urdu">ایک خاندان، ایک کاروبار، ایک مقصد</div>
+      <p>Haji Toor Khan Machine Block Works is a proud family-run construction business. With 9 cousins working together as one team, we have built a reputation for quality, reliability and timely delivery.</p>
+      <p>Our father Ajmal Khan has been in the construction field for years, handling boundary walls, land leveling and site preparation — making every plot beautiful and ready for building.</p>
+      <div class="about-features">
+        <div class="feature"><div class="feature-icon">🏗️</div><span>Quality Blocks</span></div>
+        <div class="feature"><div class="feature-icon">🚚</div><span>Home Delivery</span></div>
+        <div class="feature"><div class="feature-icon">⛏️</div><span>Land Leveling</span></div>
+        <div class="feature"><div class="feature-icon">👷</div><span>Expert Team</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="products" id="products">
+  <div class="section-head">
+    <div class="section-tag">Our Products</div>
+    <h2>Premium Quality <span>Cement Blocks</span></h2>
+    <p class="urdu urdu" style="color:var(--indigo);font-weight:600;">ہمارے بلاکس — مضبوط، پائیدار اور معیاری</p>
+    <p>Made with the finest cement, crush and soil — cured with proper water treatment for maximum strength</p>
+  </div>
+  <div class="products-grid">
+    <div class="product-card">
+      <div class="block-visual"><span>3"</span></div>
+      <h3>3 Inch Block</h3>
+      <div class="urdu urdu">۳ انچ بلاک</div>
+      <p>Perfect for partition walls and light construction work</p>
+    </div>
+    <div class="product-card">
+      <div class="block-visual"><span>4"</span></div>
+      <h3>4 Inch Block</h3>
+      <div class="urdu urdu">۴ انچ بلاک</div>
+      <p>Ideal for interior walls and room divisions</p>
+    </div>
+    <div class="product-card">
+      <div class="block-visual"><span>5"</span></div>
+      <h3>5 Inch Block</h3>
+      <div class="urdu urdu">۵ انچ بلاک</div>
+      <p>Standard size for most building constructions</p>
+    </div>
+    <div class="product-card">
+      <div class="block-visual"><span>6"</span></div>
+      <h3>6 Inch Block</h3>
+      <div class="urdu urdu">۶ انچ بلاک</div>
+      <p>Heavy-duty blocks for boundary and main walls</p>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-head">
+    <div class="section-tag">Our Services</div>
+    <h2>Complete <span>Construction Solutions</span></h2>
+    <p class="urdu urdu" style="color:var(--pink);font-weight:600;">ہماری خدمات — بلاک بنانا، سپلائی، کنسٹرکشن</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 3h8v8H3V3m10 0h8v8h-8V3M3 13h8v8H3v-8m10 0h8v8h-8v-8z"/></svg>
+      </div>
+      <h3>Block Manufacturing</h3>
+      <div class="urdu urdu">بلاک بنانا</div>
+      <p>High-quality blocks made with cement, crush and soil using diesel/petrol-powered machines. Every block is water-cured for strength.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm12 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm-1-5.5V9.5h2.5l1.96 2.5H17z"/></svg>
+      </div>
+      <h3>Home Delivery</h3>
+      <div class="urdu urdu">گھر تک سپلائی</div>
+      <p>Blocks loaded on Mazda trucks and delivered directly to your construction site. Fast, reliable and on-time service.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3z"/></svg>
+      </div>
+      <h3>Boundary Walls</h3>
+      <div class="urdu urdu">باؤنڈری وال</div>
+      <p>Expert construction of plot boundary walls by our experienced team. Strong, straight and beautifully finished.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 6l-3.75 5 2.85 3.8-1.6 1.2C9.81 13.75 7 10 7 10l-6 8h22L14 6z"/></svg>
+      </div>
+      <h3>Land Leveling</h3>
+      <div class="urdu urdu">زمین ہموار کرنا</div>
+      <p>Professional land leveling and soil work using our dumpers — making your plot ready and beautiful for construction.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"/></svg>
+      </div>
+      <h3>Material Supply</h3>
+      <div class="urdu urdu">مٹی اور کشش</div>
+      <p>Supply of quality soil (mitti) and crush material through our own dumper trucks for your construction needs.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
+      </div>
+      <h3>Quality Guarantee</h3>
+      <div class="urdu urdu">معیار کی ضمانت</div>
+      <p>Every block is made with proper cement ratio, quality crush and soil — watered and cured for maximum durability.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FLEET -->
+<section class="fleet" id="fleet">
+  <div class="section-head">
+    <div class="section-tag" style="background:linear-gradient(135deg,#fbbf24,#ec4899);">Our Fleet</div>
+    <h2>Our <span>Own Vehicles</span></h2>
+    <p class="urdu urdu" style="color:#fde68a;font-weight:600;">ہماری اپنی گاڑیاں — تیز اور قابل اعتماد</p>
+  </div>
+  <div class="fleet-grid">
+    <div class="fleet-card">
+      <div class="fleet-icon">
+        <svg viewBox="0 0 24 24"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm12 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm-1-5.5V9.5h2.5l1.96 2.5H17z"/></svg>
+      </div>
+      <h3>Dumper Trucks</h3>
+      <div class="urdu urdu">ڈمپر ٹرک</div>
+      <div class="count">2 Units</div>
+      <p>For bringing soil and crush material to the site. Drivers on permanent salary.</p>
+    </div>
+    <div class="fleet-card">
+      <div class="fleet-icon">
+        <svg viewBox="0 0 24 24"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm12 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm-1-5.5V9.5h2.5l1.96 2.5H17z"/></svg>
+      </div>
+      <h3>Mazda Trucks</h3>
+      <div class="urdu urdu">میزڈا ٹرک</div>
+      <div class="count">3 Units</div>
+      <p>For loading blocks and delivering to customer's home. Fast and reliable service.</p>
+    </div>
+    <div class="fleet-card">
+      <div class="fleet-icon">
+        <svg viewBox="0 0 24 24"><path d="M19.77 7.23l.01-.01-3.72-3.72L15 4.56l2.11 2.11c-.94.36-1.61 1.26-1.61 2.33 0 1.38 1.12 2.5 2.5 2.5.36 0 .69-.08 1-.21v7.21c0 .55-.45 1-1 1s-1-.45-1-1V14c0-1.1-.9-2-2-2h-1V5c0-1.1-.9-2-2-2H6c-1.1 0-2 .9-2 2v16h10v-7.5h1.5v5c0 1.38 1.12 2.5 2.5 2.5s2.5-1.12 2.5-2.5V9c0-.69-.28-1.32-.73-1.77zM12 10H6V5h6v5z"/></svg>
+      </div>
+      <h3>Block Machine</h3>
+      <div class="urdu urdu">بلاک مشین</div>
+      <div class="count">Diesel / Petrol</div>
+      <p>Heavy-duty machine running on diesel and petrol for manufacturing quality blocks.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="team" id="team">
+  <div class="section-head">
+    <div class="section-tag">Our Team</div>
+    <h2>The <span>People Behind</span> Our Success</h2>
+    <p class="urdu urdu" style="color:var(--pink);font-weight:600;">ہماری ٹیم — محنتی، ایماندار اور تجربہ کار</p>
+  </div>
+  <div class="team-grid">
+    <div class="team-card">
+      <div class="team-avatar">AK</div>
+      <h4>Ajmal Khan</h4>
+      <div class="urdu urdu">اجمل خان</div>
+      <p>Founder & Father — Construction Expert</p>
+    </div>
+    <div class="team-card">
+      <div class="team-avatar">SK</div>
+      <h4>Saifullah Khan</h4>
+      <div class="urdu urdu">سیف اللہ خان</div>
+      <p>Business Head — Managing Operations</p>
+    </div>
+    <div class="team-card">
+      <div class="team-avatar">9+</div>
+      <h4>9 Cousins</h4>
+      <div class="urdu urdu">۹ چچا زاد بھائی</div>
+      <p>Working together as one united family team</p>
+    </div>
+    <div class="team-card">
+      <div class="team-avatar">10</div>
+      <h4>Skilled Labor</h4>
+      <div class="urdu urdu">۱۰ محنتی مزدور</div>
+      <p>Making, moving and caring for every block</p>
+    </div>
+  </div>
+</section>
+
+<!-- CARE -->
+<section class="care">
+  <div class="care-content">
+    <div class="section-tag" style="background:linear-gradient(135deg,#f97316,#ec4899);">Our Values</div>
+    <h2 style="font-size:clamp(24px,4vw,36px);margin-bottom:12px;">We Care For <span style="background:linear-gradient(135deg,#f97316,#ec4899);-webkit-background-clip:text;background-clip:text;color:transparent;">Our People</span></h2>
+    <p class="urdu urdu" style="font-size:clamp(17px,2.8vw,20px);color:var(--dark);font-weight:600;">ہم اپنے لوگوں کا خیال رکھتے ہیں</p>
+    <div class="care-grid">
+      <div class="care-item">
+        <div class="emoji">🍲</div>
+        <h4>Roti & Food</h4>
+        <div class="urdu urdu">روٹی اور کھانا</div>
+        <p>Daily meals provided to all our laborers</p>
+      </div>
+      <div class="care-item">
+        <div class="emoji">☕</div>
+        <h4>Chai & Refreshment</h4>
+        <div class="urdu urdu">چائے اور ناشتہ</div>
+        <p>Regular tea breaks throughout the day</p>
+      </div>
+      <div class="care-item">
+        <div class="emoji">🛏️</div>
+        <h4>Resting Place</h4>
+        <div class="urdu urdu">سونے کی جگہ</div>
+        <p>Proper accommodation for our workers</p>
+      </div>
+      <div class="care-item">
+        <div class="emoji">💼</div>
+        <h4>Permanent Salary</h4>
+        <div class="urdu urdu">مستقل تنخواہ</div>
+        <p>Drivers and staff on regular salary</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-head">
+    <div class="section-tag">Contact Us</div>
+    <h2>Get In <span>Touch</span></h2>
+    <p class="urdu urdu" style="color:var(--indigo);font-weight:600;">ہم سے رابطہ کریں</p>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <h3>Let's Build Together</h3>
+      <div class="urdu urdu">آئیے مل کر تعمیر کریں</div>
+      <div class="contact-item">
+        <div class="contact-item-icon">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        </div>
+        <div><h4>EMAIL</h4><p>info@hajitoorkhan.com</p></div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-icon">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/></svg>
+        </div>
+        <div><h4>PHONE</h4><p>+92 300 0000000</p></div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-icon">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        </div>
+        <div><h4>LOCATION</h4><p>Block Works Site, Pakistan</p></div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-icon">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+        </div>
+        <div><h4>WORKING HOURS</h4><p>Sat - Thu: 7:00 AM - 7:00 PM</p></div>
+      </div>
+    </div>
+    <div class="contact-form">
+      <h3>Send us a Message</h3>
+      <form onsubmit="event.preventDefault();alert('Thank you! We will contact you soon. شکریہ!');this.reset();">
+        <div class="form-group">
+          <label>Your Name</label>
+          <input type="text" required placeholder="Enter your name"/>
+        </div>
+        <div class="form-group">
+          <label>Phone Number</label>
+          <input type="tel" required placeholder="+92 3XX XXXXXXX"/>
+        </div>
+        <div class="form-group">
+          <label>Block Size Needed</label>
+          <input type="text" placeholder="3 / 4 / 5 / 6 inch"/>
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea placeholder="Tell us about your requirement..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">Send Message →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-content">
+    <div class="footer-logo">
+      <div class="logo-icon">HT</div>
+      <div>
+        <h3>Haji Toor Khan Machine Block Works</h3>
+        <div class="urdu urdu">حاجی طور خان مشین بلاک ورکس</div>
+      </div>
+    </div>
+    <p>Building trust, one block at a time.</p>
+    <p class="urdu urdu" style="background:linear-gradient(135deg,#fbbf24,#ec4899);-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:600;">ایک ایک بلاک سے اعتماد کی تعمیر</p>
+    <div class="footer-bottom">
+      <p>© 2026 Haji Toor Khan Machine Block Works. All Rights Reserved.</p>
+      <p>Owned by Saifullah Khan — Son of Ajmal Khan</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const menuBtn = document.getElementById('menuBtn');
+  const navLinks = document.getElementById('navLinks');
+  menuBtn.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+    menuBtn.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
+  });
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('active');
+      menuBtn.textContent = '☰';
+    });
+  });
+  document.addEventListener('click', (e) => {
+    if (!navLinks.contains(e.target) && !menuBtn.contains(e.target)) {
+      navLinks.classList.remove('active');
+      menuBtn.textContent = '☰';
+    }
+  });
+  window.addEventListener('scroll', () => {
+    const nav = document.querySelector('nav');
+    if (window.scrollY > 50) {
+      nav.style.padding = window.innerWidth < 768 ? '8px 4%' : '10px 5%';
+    } else {
+      nav.style.padding = window.innerWidth < 768 ? '12px 4%' : '12px 5%';
+    }
+  }, { passive: true });
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.product-card,.service-card,.fleet-card,.team-card,.care-item').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(30px)';
+    el.style.transition = 'all .6s';
+    observer.observe(el);
+  });
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 768) {
+      navLinks.classList.remove('active');
+      menuBtn.textContent = '☰';
+    }
+  });
+</script>
+</body>
+</html>
